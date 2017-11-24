@@ -8,9 +8,9 @@ import java.util.ListIterator;
 
 public class MyList {
 	public static void main(String[] args) {
-		List<String> list1 = new ArrayList<>();  //数组
-		List<String> list2 = new LinkedList<>();  //双向链表
-		List<String> list3 = new ArrayList<>();  //数组
+		List<String> list1 = new ArrayList<String>();  //数组
+		List<String> list2 = new LinkedList<String>();  //双向链表
+		List<String> list3 = new ArrayList<String>();  //数组
 		//----添加
 		list1.add("a");
 		list1.add("c");

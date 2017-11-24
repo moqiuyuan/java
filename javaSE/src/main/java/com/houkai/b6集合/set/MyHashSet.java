@@ -7,7 +7,7 @@ public class MyHashSet {
 	public static void main(String[] args) {
 		Person p = new Person(11,"hou");
 		Person p1 = new Person(11, "hou");
-		HashSet set = new HashSet<>();
+		HashSet set = new HashSet<Object>();
 		set.add(p1);
 		set.add(p);
 		set.add("0000");

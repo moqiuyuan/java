@@ -15,7 +15,7 @@ public class Demo {
 		//集合变数组
 		Object[] i = list.toArray();
 		for (Object object : i) {
-			System.out.println((int)object);
+			System.out.println(object);
 		}
 		
 	}

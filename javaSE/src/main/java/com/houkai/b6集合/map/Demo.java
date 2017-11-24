@@ -10,9 +10,9 @@ import java.util.TreeMap;
 public class Demo {
 	public static <E> void main(String[] args) {
 		//set集合用到的map集合的东西
-		Map map1 = new HashMap<>();
-		Map map2 = new TreeMap<>();
-		Map map3 = new Hashtable<>();  //和hashMap一样  但是线程安全  hashtable的key值不可以null hashmap可以
+		Map map1 = new HashMap<Object, Object>();
+		Map map2 = new TreeMap<Object, Object>();
+		Map map3 = new Hashtable<Object, Object>();  //和hashMap一样  但是线程安全  hashtable的key值不可以null hashmap可以
 		//添加
 		map1.put("1", "a");
 		map1.put("2", "b");
