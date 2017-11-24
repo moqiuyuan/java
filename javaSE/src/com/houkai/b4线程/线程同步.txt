@@ -1,0 +1,53 @@
+需求讲得不够清楚，尝试看你的代码设计，也看不大明白，不过有些比较明显的问题：
+Thread的run方法你为何用synchronized 装饰？synchronized 同步方法的互斥只发生在多个线程调用同个对象的方法时，
+在这里每个线程的run方法都是由主线程开启，何来多个线程调用run?
+另外 在线程内部调用wait();和notifyAll，相当于调用self.wait和self.notifyAll，这两个方法的同步是通过同一个
+对象来进行互斥的，那么各自线程各自利用自身进行互斥，线程之间并没有任何交集的地方，怎么实现会实现交互？举个简单的例子，
+线程t1调用wait()进入了自身的等待区，它现在不能再往下跑了，现在等的是别的线程来调用t1.notifyAll来激活，但是线程
+t2和t3都不知道t1这个东西，怎么来激活呢？甚至可能t2和t3都自己进入了自身对象的等待区而自身难保了.. 这样谁都救不了谁~~ 
+     猜想你的思路吧：140个客户，每个客户需要办理的时间分别是确定的，一共有12个窗口可以办理客户，每个窗口处理完之后紧接
+     着处理下一个客户（每个窗口的运作时间都不会影响到其他窗口的运作），直到全部处理完是吧。那么这就是一个生产者&消费者的
+     问题了，这里的生产者就是客户和他的时间，而且还是固定的量，消费者就是窗口，我们抽象为一个个的线程，于是：
+     抽象一个Routine类表示事务，里面描述了用户名称和用户需要办理的时间：
+     class Routine{
+     String name;
+     long orderTime;
+     int custNumber; // 描述当前客户的序号
+     }
+    抽象一个Routine的Provider类，用于向窗口提供事务，需要考虑同步：
+     class RoutineProvider{
+      private List<Routine> routines = new LinkedList<Routine>();
+       public void init(){
+       //在这里做初始化，为routines 添加140个实例，count置为140
+      }
+     //声明fetchRoutine，用于向窗口线程提供一个Routine，需要注意的是，这里需要同步
+     public synchronized Routine fetchRoutine(){
+         if(routines.isEmpty())return null;
+         return  routines.removeFirst();
+      }
+   }
+   此后是窗口线程类：
+   class WorkThread extends Thread{
+    private RoutineProvider provider;
+    private String name;
+    public WorkThread(String name, RoutineProvider provider){
+        this.name = name;
+         this.provider = provider;
+      }
+    public void run(){
+       while(true){
+         Routine r = provider.fetchRoutine()
+         if(r == null)break;   //事务全部被窗口线程拿走了
+         System.out.println("窗口[" + name + "]正在处理第" + r.getCustNumber() + "个顾客(" + r.getName() + ")");
+        try{
+         sleep(r.getOrderTime())
+          }catch(InterrupttedException e){}
+    }
+} 
+   最后的处理简单了：
+   1  新建一个RoutineProvider，为它初始化Routine列表
+   2  创建一系列的窗口线程（WorkThread），在构造函数中指定窗口名、还有Provider(全局唯一）
+   3 逐个调用线程的start()方法。
+     
+PS:1楼的解法很明显有缺陷：两个synchronized的方法并没有真实的同步，在线程处理上面没有考虑共享数据侵蚀的问题，比如取
+出一个用户之后，count立马需要-1，这个操作需要作为原子，这里便没有考虑到。

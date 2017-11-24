@@ -1,0 +1,7 @@
+package com.houkai.a6¼Ì³Ð;
+
+public class A {
+	public void animal(){
+		System.out.println("¶¯Îï½Ð");
+	}
+}

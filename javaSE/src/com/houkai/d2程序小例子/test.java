@@ -1,0 +1,8 @@
+package com.houkai.d2³ÌÐòÐ¡Àý×Ó;
+
+public class test {
+	public static void main(String[] args) {
+		short a = 7;		
+		short b = 7;
+	}
+}
