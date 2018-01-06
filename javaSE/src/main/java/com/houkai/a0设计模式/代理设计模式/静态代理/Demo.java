@@ -1,8 +1,8 @@
-package com.houkai.a0Éè¼ÆÄ£Ê½.´úÀíÉè¼ÆÄ£Ê½.¾²Ì¬´úÀí;
+package com.houkai.a0è®¾è®¡æ¨¡å¼.ä»£ç†è®¾è®¡æ¨¡å¼.é™æ€ä»£ç†;
 /**
- * ¾²Ì¬´úÀí: Ò»¸öÔ­ÀàÓëÒ»¸ö´úÀíÀàÒªÒ»Ò»¶ÔÓ¦¡£
- * Á½Õß¶¼ÊµÏÖ¹²Í¬µÄ½Ó¿Ú»ò¼Ì³ĞÏàÍ¬µÄ³éÏóÀà£»
- * Ö»ÊÇÔÚ´úÀíÀàÖĞ,ÊµÀı»¯Ô­Àà£¬ÔÚÔ­Àà·½·¨µÄÇ°ºóÌí¼ÓĞÂµÄÂß¼­¡£
+ * é™æ€ä»£ç†: ä¸€ä¸ªåŸç±»ä¸ä¸€ä¸ªä»£ç†ç±»è¦ä¸€ä¸€å¯¹åº”ã€‚
+ * ä¸¤è€…éƒ½å®ç°å…±åŒçš„æ¥å£æˆ–ç»§æ‰¿ç›¸åŒçš„æŠ½è±¡ç±»ï¼›
+ * åªæ˜¯åœ¨ä»£ç†ç±»ä¸­,å®ä¾‹åŒ–åŸç±»ï¼Œåœ¨åŸç±»æ–¹æ³•çš„å‰åæ·»åŠ æ–°çš„é€»è¾‘ã€‚
  * */
 abstract class Subject{
 	abstract public void request();
@@ -11,12 +11,12 @@ abstract class Subject{
 class RealSubject extends Subject{
 	@Override
 	public void request() {
-		System.out.println("ÕæÕıµÄÄ¿±ê±»Ö´ĞĞÁË");
+		System.out.println("çœŸæ­£çš„ç›®æ ‡è¢«æ‰§è¡Œäº†");
 	}	
 }
 
 class ProxySubject extends Subject{
-	private RealSubject realSubject;  //ÒÔÕæÊµ½ÇÉ«×÷Îª´úÀí½ÇÉ«µÄÊôĞÔ
+	private RealSubject realSubject;  //ä»¥çœŸå®è§’è‰²ä½œä¸ºä»£ç†è§’è‰²çš„å±æ€§
 	
 	public ProxySubject() {
 		realSubject = new RealSubject();

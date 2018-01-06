@@ -1,12 +1,12 @@
-package com.houkai.a0Éè¼ÆÄ£Ê½.µ¥ÀıÄ£Ê½;
+package com.houkai.a0è®¾è®¡æ¨¡å¼.å•ä¾‹æ¨¡å¼;
 
-public class ¶öººÄ£Ê½ {
-	public ¶öººÄ£Ê½() {
-		System.out.println("¹¹Ôìº¯Êı");
+public class é¥¿æ±‰æ¨¡å¼ {
+	public é¥¿æ±‰æ¨¡å¼() {
+		System.out.println("æ„é€ å‡½æ•°");
 	}
 	
-	private static ¶öººÄ£Ê½  single = new ¶öººÄ£Ê½();
-	public ¶öººÄ£Ê½ getInstance(){
+	private static é¥¿æ±‰æ¨¡å¼  single = new é¥¿æ±‰æ¨¡å¼();
+	public é¥¿æ±‰æ¨¡å¼ getInstance(){
 		return single;
 	}
 }

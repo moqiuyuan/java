@@ -1,4 +1,4 @@
-package com.houkai.a0Éè¼ÆÄ£Ê½.´úÀíÉè¼ÆÄ£Ê½.¶¯Ì¬´úÀí;
+package com.houkai.a0è®¾è®¡æ¨¡å¼.ä»£ç†è®¾è®¡æ¨¡å¼.åŠ¨æ€ä»£ç†;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
@@ -6,31 +6,31 @@ import java.lang.reflect.Proxy;
 
 
 /**
- * Java¶¯Ì¬´úÀíÀàÎ»ÓÚJava.lang.reflect°üÏÂ£¬Ò»°ãÖ÷ÒªÉæ¼°µ½ÒÔÏÂÁ½¸öÀà£º
- * 1)Interface InvocationHandler£º
- *   ¸Ã½Ó¿ÚÖĞ½ö¶¨ÒåÁËÒ»¸ö·½·¨£ºinvoke(Object obj,Method method, Object[] args)
- *   ÔÚÊµ¼ÊÊ¹ÓÃÊ±£¬µÚÒ»¸ö²ÎÊıobjÒ»°ãÊÇÖ¸´úÀíÀà£¬methodÊÇ±»´úÀíµÄ·½·¨£¬argsÎª¸Ã·½·¨µÄ²ÎÊıÊı×é¡£
- *   Õâ¸ö³éÏó·½·¨ÔÚ´úÀíÀàÖĞ¶¯Ì¬ÊµÏÖ¡£
+ * JavaåŠ¨æ€ä»£ç†ç±»ä½äºJava.lang.reflectåŒ…ä¸‹ï¼Œä¸€èˆ¬ä¸»è¦æ¶‰åŠåˆ°ä»¥ä¸‹ä¸¤ä¸ªç±»ï¼š
+ * 1)Interface InvocationHandlerï¼š
+ *   è¯¥æ¥å£ä¸­ä»…å®šä¹‰äº†ä¸€ä¸ªæ–¹æ³•ï¼šinvoke(Object obj,Method method, Object[] args)
+ *   åœ¨å®é™…ä½¿ç”¨æ—¶ï¼Œç¬¬ä¸€ä¸ªå‚æ•°objä¸€èˆ¬æ˜¯æŒ‡ä»£ç†ç±»ï¼Œmethodæ˜¯è¢«ä»£ç†çš„æ–¹æ³•ï¼Œargsä¸ºè¯¥æ–¹æ³•çš„å‚æ•°æ•°ç»„ã€‚
+ *   è¿™ä¸ªæŠ½è±¡æ–¹æ³•åœ¨ä»£ç†ç±»ä¸­åŠ¨æ€å®ç°ã€‚
  * 
- * 2)Proxy£º¸ÃÀà¼´Îª¶¯Ì¬´úÀíÀà£¬ÆäÖĞÖ÷Òª°üº¬ÒÔÏÂÄÚÈİ£º
+ * 2)Proxyï¼šè¯¥ç±»å³ä¸ºåŠ¨æ€ä»£ç†ç±»ï¼Œå…¶ä¸­ä¸»è¦åŒ…å«ä»¥ä¸‹å†…å®¹ï¼š
  *   Static Object newProxyInstance(ClassLoader loader, Class[] interfaces, InvocationHandler h)
- *   ·µ»Ø´úÀíÀàµÄÒ»¸öÊµÀı£¬·µ»ØºóµÄ´úÀíÀà¿ÉÒÔµ±×÷±»´úÀíÀàÊ¹ÓÃ¡£
- *   ËùÎ½Dynamic ProxyÊÇÕâÑùÒ»ÖÖclass£ºËüÊÇÔÚÔËĞĞÊ±Éú³ÉµÄclass£¬ÔÚÉú³ÉËüÊ±Äã±ØĞëÌá¹©Ò»×éinterface¸øËü£¬
- *   È»ºó¸Ãclass¾ÍĞû³ÆËüÊµÏÖÁËÕâĞ© interface¡£
+ *   è¿”å›ä»£ç†ç±»çš„ä¸€ä¸ªå®ä¾‹ï¼Œè¿”å›åçš„ä»£ç†ç±»å¯ä»¥å½“ä½œè¢«ä»£ç†ç±»ä½¿ç”¨ã€‚
+ *   æ‰€è°“Dynamic Proxyæ˜¯è¿™æ ·ä¸€ç§classï¼šå®ƒæ˜¯åœ¨è¿è¡Œæ—¶ç”Ÿæˆçš„classï¼Œåœ¨ç”Ÿæˆå®ƒæ—¶ä½ å¿…é¡»æä¾›ä¸€ç»„interfaceç»™å®ƒï¼Œ
+ *   ç„¶åè¯¥classå°±å®£ç§°å®ƒå®ç°äº†è¿™äº› interfaceã€‚
  * */
 interface Subject{
 	public abstract void request();
 }
 
-//ÕæÕıµÄ½ÇÉ«
+//çœŸæ­£çš„è§’è‰²
 class RealSubject implements Subject{
 	@Override
 	public void request() {
-		System.out.println("ÕæÕıµÄÄ¿±ê±»Ö´ĞĞÁË");
+		System.out.println("çœŸæ­£çš„ç›®æ ‡è¢«æ‰§è¡Œäº†");
 	}	
 }
 
-//¶¯Ì¬´úÀí
+//åŠ¨æ€ä»£ç†
 class DynamicSubject implements InvocationHandler{
 	private Object sub;
 	
@@ -58,8 +58,8 @@ class DynamicSubject implements InvocationHandler{
 
 public class Demo {
 	public static void main(String[] args) {
-	      RealSubject rs = new RealSubject();  //ÔÚÕâÀïÖ¸¶¨±»´úÀíÀà
-	      InvocationHandler ds = new DynamicSubject(rs);  //³õÊ¼»¯´úÀíÀà
+	      RealSubject rs = new RealSubject();  //åœ¨è¿™é‡ŒæŒ‡å®šè¢«ä»£ç†ç±»
+	      InvocationHandler ds = new DynamicSubject(rs);  //åˆå§‹åŒ–ä»£ç†ç±»
 	      Subject subject = (Subject) Proxy.newProxyInstance(rs.getClass().getClassLoader(),rs.getClass().getInterfaces(),ds );
 	      subject.request();
 	    }

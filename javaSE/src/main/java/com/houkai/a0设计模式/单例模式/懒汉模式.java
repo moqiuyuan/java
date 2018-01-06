@@ -1,17 +1,17 @@
-package com.houkai.a0Éè¼ÆÄ£Ê½.µ¥ÀıÄ£Ê½;
+package com.houkai.a0è®¾è®¡æ¨¡å¼.å•ä¾‹æ¨¡å¼;
 
-public class ÀÁººÄ£Ê½ {
-	public ÀÁººÄ£Ê½() {
-		System.out.println("¹¹Ôìº¯Êı");
+public class æ‡’æ±‰æ¨¡å¼ {
+	public æ‡’æ±‰æ¨¡å¼() {
+		System.out.println("æ„é€ å‡½æ•°");
 	}
 	
-	private static ÀÁººÄ£Ê½  single = null;
+	private static æ‡’æ±‰æ¨¡å¼  single = null;
 	
-	public ÀÁººÄ£Ê½ getInstance(){
+	public æ‡’æ±‰æ¨¡å¼ getInstance(){
 		
-		synchronized(ÀÁººÄ£Ê½.class){
+		synchronized(æ‡’æ±‰æ¨¡å¼.class){
 			if(single == null){
-				return single = new ÀÁººÄ£Ê½(); 
+				return single = new æ‡’æ±‰æ¨¡å¼(); 
 			}
 		}
 		return single;
